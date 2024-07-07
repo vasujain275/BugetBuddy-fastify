@@ -1,0 +1,52 @@
+{
+  "name": "BudgetBuddy-api",
+  "version": "0.1.0",
+  "description": "",
+  "main": "app.ts",
+  "scripts": {
+    "build": "rimraf dist && tsc",
+    "prestart": "pnpm run build",
+    "start": "node --env-file .env dist/src/app.js",
+    "predev": "rimraf dist && pnpm run build",
+    "dev": "concurrently \"tsc -w\" \"nodemon --env-file .env dist/src/app.js\"",
+    "format": "pnpm exec prettier . --write",
+    "lint": "pnpm exec eslint --fix .",
+    "serve": "node dist/src/app.js",
+    "db:generate": "drizzle-kit generate sqlite",
+    "db:migrate": "drizzle-kit migrate sqlite",
+    "studio": "drizzle-kit studio",
+    "prepare": "cd .. && husky api/.husky"
+  },
+  "author": "Vasu Jain",
+  "devDependencies": {
+    "@eslint/js": "^9.6.0",
+    "@types/node": "^20.14.9",
+    "@typescript-eslint/eslint-plugin": "^7.15.0",
+    "@typescript-eslint/parser": "^7.15.0",
+    "concurrently": "^8.2.2",
+    "drizzle-kit": "^0.22.8",
+    "eslint": "^9.6.0",
+    "globals": "^15.8.0",
+    "husky": "^9.0.11",
+    "nodemon": "^3.1.4",
+    "pino-pretty": "^11.2.1",
+    "prettier": "^3.3.2",
+    "rimraf": "^5.0.7",
+    "typescript": "^5.5.3",
+    "typescript-eslint": "^7.15.0"
+  },
+  "dependencies": {
+    "@fastify/cookie": "^9.3.1",
+    "@fastify/cors": "^9.0.1",
+    "@fastify/jwt": "^8.0.1",
+    "@fastify/swagger": "^8.14.0",
+    "@libsql/client": "^0.7.0",
+    "@paralleldrive/cuid2": "^2.2.2",
+    "argon2": "^0.40.3",
+    "drizzle-orm": "^0.31.2",
+    "fastify": "^4.28.1",
+    "fastify-zod": "^1.4.0",
+    "zod": "^3.23.8",
+    "zod-to-json-schema": "^3.23.1"
+  }
+}
